@@ -1,0 +1,105 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Clone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-900 text-white font-roboto">
+    <div class="flex">
+        <!-- Sidebar -->
+        <div class="w-60 h-screen bg-black p-5 flex flex-col">
+            <img src="https://storage.googleapis.com/a1aa/image/4epkutEYbLyVf0Fz1tsHitY0jNu9LR6mWmHqLVHVF1nbXfsnA.jpg" alt="Spotify logo in white text on a black background" class="mb-6" width="131" height="40">
+            <a href="#" class="text-gray-400 hover:text-white mb-4 flex items-center">
+                <i class="fas fa-home mr-3"></i> Home
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white mb-4 flex items-center">
+                <i class="fas fa-search mr-3"></i> Search
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white mb-4 flex items-center">
+                <i class="fas fa-book mr-3"></i> Your Library
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white mb-4 flex items-center">
+                <i class="fas fa-plus-square mr-3"></i> Create Playlist
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white mb-4 flex items-center">
+                <i class="fas fa-heart mr-3"></i> Liked Songs
+            </a>
+        </div>
+        <!-- Main Content -->
+        <div class="flex-1 p-6">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-6">
+                <div class="flex items-center bg-gray-800 rounded-full px-4 py-2">
+                    <i class="fas fa-search text-gray-400"></i>
+                    <input type="text" placeholder="Search" class="bg-transparent border-none text-white ml-3 focus:outline-none">
+                </div>
+                <div class="flex items-center">
+                    <img src="https://storage.googleapis.com/a1aa/image/qEymWVekL9yVXquOBLlLvfeHxQwCio07LVSIYceOukPod9ZPB.jpg" alt="User profile picture" class="rounded-full mr-3" width="32" height="32">
+                    <span>Username</span>
+                </div>
+            </div>
+            <!-- Playlist -->
+            <div>
+                <h2 class="text-2xl font-bold mb-6">Good Evening</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="flex items-center">
+                        <img src="https://storage.googleapis.com/a1aa/image/hHaBnz8gAW6FP59wDRgF0r60wnnBaCSZDH3dsfOUIaRsrP7JA.jpg" alt="Album cover with abstract art" class="mr-4" width="64" height="64">
+                        <div>
+                            <h3 class="text-lg">Playlist 1</h3>
+                            <p class="text-gray-400">Artist 1</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <img src="https://storage.googleapis.com/a1aa/image/hHaBnz8gAW6FP59wDRgF0r60wnnBaCSZDH3dsfOUIaRsrP7JA.jpg" alt="Album cover with abstract art" class="mr-4" width="64" height="64">
+                        <div>
+                            <h3 class="text-lg">Playlist 2</h3>
+                            <p class="text-gray-400">Artist 2</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <img src="https://storage.googleapis.com/a1aa/image/hHaBnz8gAW6FP59wDRgF0r60wnnBaCSZDH3dsfOUIaRsrP7JA.jpg" alt="Album cover with abstract art" class="mr-4" width="64" height="64">
+                        <div>
+                            <h3 class="text-lg">Playlist 3</h3>
+                            <p class="text-gray-400">Artist 3</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <img src="https://storage.googleapis.com/a1aa/image/hHaBnz8gAW6FP59wDRgF0r60wnnBaCSZDH3dsfOUIaRsrP7JA.jpg" alt="Album cover with abstract art" class="mr-4" width="64" height="64">
+                        <div>
+                            <h3 class="text-lg">Playlist 4</h3>
+                            <p class="text-gray-400">Artist 4</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <img src="https://storage.googleapis.com/a1aa/image/hHaBnz8gAW6FP59wDRgF0r60wnnBaCSZDH3dsfOUIaRsrP7JA.jpg" alt="Album cover with abstract art" class="mr-4" width="64" height="64">
+                        <div>
+                            <h3 class="text-lg">Playlist 5</h3>
+                            <p class="text-gray-400">Artist 5</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class="fixed bottom-0 left-60 right-0 bg-gray-800 p-4 flex justify-between items-center">
+        <div class="flex items-center">
+            <i class="fas fa-random text-gray-400 mx-2"></i>
+            <i class="fas fa-step-backward text-gray-400 mx-2"></i>
+            <i class="fas fa-play-circle text-white mx-2"></i>
+            <i class="fas fa-step-forward text-gray-400 mx-2"></i>
+            <i class="fas fa-redo text-gray-400 mx-2"></i>
+        </div>
+        <div class="flex-grow mx-4">
+            <input type="range" min="0" max="100" value="0" class="w-full">
+        </div>
+        <div class="flex items-center">
+            <i class="fas fa-volume-up text-gray-400 mr-2"></i>
+            <input type="range" min="0" max="100" value="50">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,104 +1,93 @@
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Spotify Clone</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+    <link href="style.css" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #FFFFFF;
+        }
+    </style>
 </head>
-<body class="bg-gray-900 text-white font-roboto">
-    <div class="flex">
-        <!-- Sidebar -->
-        <div class="w-60 h-screen bg-black p-5 flex flex-col">
-            <img src="https://storage.googleapis.com/a1aa/image/4epkutEYbLyVf0Fz1tsHitY0jNu9LR6mWmHqLVHVF1nbXfsnA.jpg" alt="Spotify logo in white text on a black background" class="mb-6" width="131" height="40">
-            <a href="#" class="text-gray-400 hover:text-white mb-4 flex items-center">
+<body class="flex flex-col min-h-screen">
+    <div class="flex flex-row">
+        <div class="sidebar w-60 h-screen bg-black p-5 flex flex-col">
+            <img alt="Spotify logo in white text on a black background" class="mb-5" height="40" src="https://storage.googleapis.com/a1aa/image/hJe8r0PMstQ3aiukYv9k1PX3XLPiYz0HEzgHEIjCqUayKQ7JA.jpg" width="131"/>
+            <a class="text-gray-400 hover:text-white mb-3 flex items-center" href="#">
                 <i class="fas fa-home mr-3"></i> Home
             </a>
-            <a href="#" class="text-gray-400 hover:text-white mb-4 flex items-center">
+            <a class="text-gray-400 hover:text-white mb-3 flex items-center" href="#">
                 <i class="fas fa-search mr-3"></i> Search
             </a>
-            <a href="#" class="text-gray-400 hover:text-white mb-4 flex items-center">
+            <a class="text-gray-400 hover:text-white mb-3 flex items-center" href="#">
                 <i class="fas fa-book mr-3"></i> Your Library
             </a>
-            <a href="#" class="text-gray-400 hover:text-white mb-4 flex items-center">
-                <i class="fas fa-plus-square mr-3"></i> Create Playlist
-            </a>
-            <a href="#" class="text-gray-400 hover:text-white mb-4 flex items-center">
-                <i class="fas fa-heart mr-3"></i> Liked Songs
-            </a>
-        </div>
-        <!-- Main Content -->
-        <div class="flex-1 p-6">
-            <!-- Header -->
-            <div class="flex justify-between items-center mb-6">
-                <div class="flex items-center bg-gray-800 rounded-full px-4 py-2">
-                    <i class="fas fa-search text-gray-400"></i>
-                    <input type="text" placeholder="Search" class="bg-transparent border-none text-white ml-3 focus:outline-none">
-                </div>
-                <div class="flex items-center">
-                    <img src="https://storage.googleapis.com/a1aa/image/qEymWVekL9yVXquOBLlLvfeHxQwCio07LVSIYceOukPod9ZPB.jpg" alt="User profile picture" class="rounded-full mr-3" width="32" height="32">
-                    <span>Username</span>
-                </div>
+            <div class="mt-5">
+                <h3 class="text-gray-400 text-xs uppercase mb-2">Playlists</h3>
+                <a class="text-gray-400 hover:text-white mb-2 block" href="#">Discover Weekly</a>
+                <a class="text-gray-400 hover:text-white mb-2 block" href="#">Release Radar</a>
+                <a class="text-gray-400 hover:text-white mb-2 block" href="#">Daily Mix 1</a>
+                <a class="text-gray-400 hover:text-white mb-2 block" href="#">Daily Mix 2</a>
+                <a class="text-gray-400 hover:text-white mb-2 block" href="#">Daily Mix 3</a>
+                <a class="text-gray-400 hover:text-white mb-2 block" href="#">Daily Mix 4</a>
+                <a class="text-gray-400 hover:text-white mb-2 block" href="#">Daily Mix 5</a>
+                <a class="text-gray-400 hover:text-white mb-2 block" href="#">Daily Mix 6</a>
             </div>
-            <!-- Playlist -->
-            <div>
-                <h2 class="text-2xl font-bold mb-6">Good Evening</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="flex items-center">
-                        <img src="https://storage.googleapis.com/a1aa/image/hHaBnz8gAW6FP59wDRgF0r60wnnBaCSZDH3dsfOUIaRsrP7JA.jpg" alt="Album cover with abstract art" class="mr-4" width="64" height="64">
-                        <div>
-                            <h3 class="text-lg">Playlist 1</h3>
-                            <p class="text-gray-400">Artist 1</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center">
-                        <img src="https://storage.googleapis.com/a1aa/image/hHaBnz8gAW6FP59wDRgF0r60wnnBaCSZDH3dsfOUIaRsrP7JA.jpg" alt="Album cover with abstract art" class="mr-4" width="64" height="64">
-                        <div>
-                            <h3 class="text-lg">Playlist 2</h3>
-                            <p class="text-gray-400">Artist 2</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center">
-                        <img src="https://storage.googleapis.com/a1aa/image/hHaBnz8gAW6FP59wDRgF0r60wnnBaCSZDH3dsfOUIaRsrP7JA.jpg" alt="Album cover with abstract art" class="mr-4" width="64" height="64">
-                        <div>
-                            <h3 class="text-lg">Playlist 3</h3>
-                            <p class="text-gray-400">Artist 3</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center">
-                        <img src="https://storage.googleapis.com/a1aa/image/hHaBnz8gAW6FP59wDRgF0r60wnnBaCSZDH3dsfOUIaRsrP7JA.jpg" alt="Album cover with abstract art" class="mr-4" width="64" height="64">
-                        <div>
-                            <h3 class="text-lg">Playlist 4</h3>
-                            <p class="text-gray-400">Artist 4</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center">
-                        <img src="https://storage.googleapis.com/a1aa/image/hHaBnz8gAW6FP59wDRgF0r60wnnBaCSZDH3dsfOUIaRsrP7JA.jpg" alt="Album cover with abstract art" class="mr-4" width="64" height="64">
-                        <div>
-                            <h3 class="text-lg">Playlist 5</h3>
-                            <p class="text-gray-400">Artist 5</p>
-                        </div>
-                    </div>
+        </div>
+        <div class="main-content flex-1 p-5">
+            <h1 class="text-2xl mb-5">Good Evening</h1>
+            <div class="playlist grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                <div class="playlist-item bg-gray-800 p-5 rounded-lg text-center">
+                    <img alt="Album cover with abstract art in vibrant colors" class="rounded-lg mb-3" height="200" src="https://storage.googleapis.com/a1aa/image/mnwek7dVNBSECqaW6AjeLZ3772VTNrAAfMi7wH3r3yOOrAtnA.jpg" width="200"/>
+                    <h2 class="text-lg mb-1">Top Hits</h2>
+                    <p class="text-gray-400">Various Artists</p>
+                </div>
+                <div class="playlist-item bg-gray-800 p-5 rounded-lg text-center">
+                    <img alt="Album cover with a black and white photo of a cityscape" class="rounded-lg mb-3" height="200" src="https://storage.googleapis.com/a1aa/image/Tpb0enJDwxXpX6xYj1NK0I8x6Tc38TkP3Hvq2C2fL1EhVg2TA.jpg" width="200"/>
+                    <h2 class="text-lg mb-1">Chill Vibes</h2>
+                    <p class="text-gray-400">Various Artists</p>
+                </div>
+                <div class="playlist-item bg-gray-800 p-5 rounded-lg text-center">
+                    <img alt="Album cover with a colorful illustration of a sunset over mountains" class="rounded-lg mb-3" height="200" src="https://storage.googleapis.com/a1aa/image/Qfhs9XEYeCpyukNhef4JEFqxhht5WAoERl2zmD47LebMtC0eE.jpg" width="200"/>
+                    <h2 class="text-lg mb-1">Summer Hits</h2>
+                    <p class="text-gray-400">Various Artists</p>
+                </div>
+                <div class="playlist-item bg-gray-800 p-5 rounded-lg text-center">
+                    <img alt="Album cover with a minimalist design featuring geometric shapes" class="rounded-lg mb-3" height="200" src="https://storage.googleapis.com/a1aa/image/qfJpikRz8PQoVyNfAOvqd7z8py6JAAAcPeOzfAhnfIFbsC0eE.jpg" width="200"/>
+                    <h2 class="text-lg mb-1">Focus</h2>
+                    <p class="text-gray-400">Various Artists</p>
+                </div>
+                <div class="playlist-item bg-gray-800 p-5 rounded-lg text-center">
+                    <img alt="Album cover with a retro design featuring neon colors and grid lines" class="rounded-lg mb-3" height="200" src="https://storage.googleapis.com/a1aa/image/F5jj5D3R90pOPFeNK3AVe75FvcI5wrvAbjPRiGSQUVeVrAtnA.jpg" width="200"/>
+                    <h2 class="text-lg mb-1">Retro Wave</h2>
+                    <p class="text-gray-400">Various Artists</p>
+                </div>
+                <div class="playlist-item bg-gray-800 p-5 rounded-lg text-center">
+                    <img alt="Album cover with a photo of a forest in autumn" class="rounded-lg mb-3" height="200" src="https://storage.googleapis.com/a1aa/image/fT0O39PUmk2bMqOvJTqjc4GP4ybHoT5WXZcKug5x5cgyKQ7JA.jpg" width="200"/>
+                    <h2 class="text-lg mb-1">Acoustic Hits</h2>
+                    <p class="text-gray-400">Various Artists</p>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Footer -->
-    <div class="fixed bottom-0 left-60 right-0 bg-gray-800 p-4 flex justify-between items-center">
-        <div class="flex items-center">
-            <i class="fas fa-random text-gray-400 mx-2"></i>
-            <i class="fas fa-step-backward text-gray-400 mx-2"></i>
-            <i class="fas fa-play-circle text-white mx-2"></i>
-            <i class="fas fa-step-forward text-gray-400 mx-2"></i>
-            <i class="fas fa-redo text-gray-400 mx-2"></i>
+    <div class="footer bg-gray-800 p-5 flex justify-between items-center fixed bottom-0 left-60 right-0">
+        <div class="controls flex items-center">
+            <i class="fas fa-step-backward text-2xl mx-2 cursor-pointer"></i>
+            <i class="fas fa-play text-2xl mx-2 cursor-pointer"></i>
+            <i class="fas fa-step-forward text-2xl mx-2 cursor-pointer"></i>
         </div>
-        <div class="flex-grow mx-4">
-            <input type="range" min="0" max="100" value="0" class="w-full">
+        <div class="progress flex-1 mx-5">
+            <input class="w-full" max="100" min="0" type="range" value="50"/>
         </div>
-        <div class="flex items-center">
-            <i class="fas fa-volume-up text-gray-400 mr-2"></i>
-            <input type="range" min="0" max="100" value="50">
+        <div class="volume flex items-center">
+            <i class="fas fa-volume-up text-2xl mx-2"></i>
+            <input class="w-24" max="100" min="0" type="range" value="50"/>
         </div>
     </div>
 </body>

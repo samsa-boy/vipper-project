@@ -1,33 +1,48 @@
 const express = require('express');
+const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
-const cors = require('cors');
 
 const app = express();
-const PORT = 3000;
-
-// Middleware
-app.use(cors());
 app.use(bodyParser.json());
 
-// Массив для хранения пользователей (в реальном приложении используйте базу данных)
-let users = [];
+// Настройка Nodemailer
+const transporter = nodemailer.createTransport({
+    host: process.env.EMAIL_SMTP_HOST,
+    port: process.env.EMAIL_SMTP_PORT,
+    secure: false, // true для 465, false для других портов
+    auth: {
+        user: process.env.EMAIL_SMTP_USER,
+        pass: process.env.EMAIL_SMTP_PASS,
+    },
+});
 
-// Обработка POST-запроса на регистрацию
-app.post('/register', (req, res) => {
+// Обработчик регистрации
+app.post('/register', async (req, res) => {
     const { name, email, password } = req.body;
 
-    // Проверка на существование пользователя
-    const existingUser  = users.find(user => user.email === email);
-    if (existingUser ) {
-        return res.status(400).json({ message: 'Пользователь с таким email уже существует.' });
-    }
+    // Здесь должна быть логика для сохранения пользователя в базе данных
+    // Например:
+    const newUser  = await User.create({ name, email, password });
 
-    // Добавление нового пользователя
-    users.push({ name, email, password });
-    res.status(201).json({ message: 'Регистрация успешна!' });
+    // Отправка электронного письма
+    const mailOptions = {
+        from: process.env.EMAIL_ADDRESS_FROM,
+        to: email,
+        subject: 'Добро пожаловать!',
+        text: `Здравствуйте, ${name}! Спасибо за регистрацию.`,
+    };
+
+    try {
+        await transporter.sendMail(mailOptions);
+        res.status(201).json({ message: 'Регистрация успешна! Проверьте вашу почту для подтверждения.' });
+    } catch (error) {
+        console.error('Ошибка при отправке письма:', error);
+        res.status(500).json({ message: 'Ошибка при регистрации. Попробуйте еще раз.' });
+    }
 });
 
 // Запуск сервера
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Сервер запущен на http://localhost:${PORT}`);
+    console.log(`Сервер запущен на порту ${PORT}`);
 });

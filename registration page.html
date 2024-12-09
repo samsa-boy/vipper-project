@@ -1,31 +1,44 @@
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Регистрация</title>
-    <link rel="stylesheet" href="style for registration.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Создайте аккаунт</h1>
-        <form id="registrationForm">
-            <label for="name">Имя</label>
-            <input type="text" id="name" name="name" required>
+    <h1>Регистрация</h1>
+    <form id="register-form">
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <input type="submit" value="Зарегистрироваться">
+    </form>
 
-            <label for="email">Электронная почта</label>
-            <input type="email" id="email" name="email" required>
+    <script>
+        document.getElementById('register-form').addEventListener('submit', function(event) {
+            event.preventDefault();
 
-            <label for="password">Пароль</label>
-            <input type="password" id="password" name="password" required>
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
 
-            <button type="submit">Зарегистрироваться</button>
-        </form>
-        <p>Нажимая «Зарегистрироваться», вы соглашаетесь с <a href="#">Условиями использования</a> и <a href="#">Политикой конфиденциальности</a>.</p>
-        
-        <!-- Элемент для отображения сообщений -->
-        <div id="message"></div>
-    </div>
-
-    <script src="script registration.js"></script>
+            fetch('http://localhost:3000/register', { // Используйте полный URL
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+            });
+        });
+    </script>
 </body>
 </html>

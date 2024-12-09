@@ -1,48 +1,72 @@
 const express = require('express');
-const nodemailer = require('nodemailer');
+const cors = require('cors');
+const mysql = require('mysql2');
 const bodyParser = require('body-parser');
+const nodemailer = require('nodemailer');
+const bcrypt = require('bcryptjs');
+require('dotenv').config();
 
 const app = express();
+const port = 3000;
+
+// Middleware
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Настройка Nodemailer
-const transporter = nodemailer.createTransport({
-    host: process.env.EMAIL_SMTP_HOST,
-    port: process.env.EMAIL_SMTP_PORT,
-    secure: false, // true для 465, false для других портов
-    auth: {
-        user: process.env.EMAIL_SMTP_USER,
-        pass: process.env.EMAIL_SMTP_PASS,
-    },
+// Подключение к базе данных
+const db = mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
-// Обработчик регистрации
-app.post('/register', async (req, res) => {
+db.connect((err) => {
+    if (err) throw err;
+    console.log('Connected to database');
+});
+
+// Регистрация пользователя
+app.post('/register', (req, res) => {
     const { name, email, password } = req.body;
 
-    // Здесь должна быть логика для сохранения пользователя в базе данных
-    // Например:
-    const newUser  = await User.create({ name, email, password });
+    // Хеширование пароля
+    const hashedPassword = bcrypt.hashSync(password, 8);
 
-    // Отправка электронного письма
-    const mailOptions = {
-        from: process.env.EMAIL_ADDRESS_FROM,
-        to: email,
-        subject: 'Добро пожаловать!',
-        text: `Здравствуйте, ${name}! Спасибо за регистрацию.`,
-    };
+    // Вставка данных в таблицу users
+    const sql = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
+    db.query(sql, [name, email, hashedPassword], (err, result) => {
+        if (err) {
+            return res.status(500).send('Ошибка при регистрации');
+        }
 
-    try {
-        await transporter.sendMail(mailOptions);
-        res.status(201).json({ message: 'Регистрация успешна! Проверьте вашу почту для подтверждения.' });
-    } catch (error) {
-        console.error('Ошибка при отправке письма:', error);
-        res.status(500).json({ message: 'Ошибка при регистрации. Попробуйте еще раз.' });
-    }
+        // Отправка письма на почту
+        const transporter = nodemailer.createTransport({
+            service: 'gmail', // или другой почтовый сервис
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS
+            }
+        });
+
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: email,
+            subject: 'Регистрация на сайте',
+            text: 'Добро пожаловать на наш сайт!'
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                return res.status(500).send('Ошибка при отправке письма');
+            }
+            res.status(200).send('Регистрация прошла успешно!');
+        });
+    });
 });
 
 // Запуск сервера
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Сервер запущен на порту ${PORT}`);
+app.listen(port, () => {
+    console.log(`Сервер запущен на http://localhost:${port}`);
 });

@@ -232,3 +232,21 @@ footer i {
     height: 100px; /* Увеличиваем высоту для мобильных устройств */
   }
 }
+
+.music-card {
+  display: inline-block; /* Ensure cards are inline */
+  margin: 15px; /* Add some space between cards */
+  text-align: center; /* Center text */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for transform and shadow */
+}
+
+.music-card img {
+  width: 100%; /* Make images responsive */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px; /* Optional: round the corners of the images */
+}
+
+.music-card:hover {
+  transform: scale(1.05); /* Scale up the card slightly */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+}
